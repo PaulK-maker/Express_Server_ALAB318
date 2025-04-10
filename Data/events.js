@@ -10,7 +10,7 @@ const events = [
     attendees: ["John Doe", "Jane Smith"],
   },
 
-  
+
   {
     id: 2,
     name: "Birthday Party",
@@ -24,3 +24,10 @@ const events = [
 ];
 
 module.exports = events;
+
+// module.exports = [
+//   { id: 1, name: "Event One", date: "2025-04-10", location: "New York" },
+//   { id: 2, name: "Event Two", date: "2025-05-15", location: "Los Angeles" },
+//   { id: 3, name: "Event Three", date: "2025-06-20", location: "Chicago" }
+// ];
+// module.exports = events;

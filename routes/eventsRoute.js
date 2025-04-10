@@ -4,16 +4,20 @@ const events = require("../Data/events");
 
 
 // Middleware to validate event ID
-router.param("id", (req, res, next, id) => {
-  if (isNaN(id)) {
-      return res.status(400).render("pages/error", {
-          title: "Error",
-          message: "Invalid Event ID!"
-      });
-  }
-  next(); // Pass control to the next middleware or route handler
-});
+// router.param("id", (req, res, next, id) => {
+//   if (isNaN(id)) {
+//       return res.status(400).render("pages/error", {
+//           title: "Error",
+//           message: "Invalid Event ID!"
+//       });
+//   }
+//   next(); // Pass control to the next middleware or route handler
+// });
 
+// GET /events - List all events
+router.get("/", (req, res) => {
+  res.json(events); // Respond with the list of events
+});
 
 // GET /events/:id - Retrieve details of a single event
 router.get("/:id", (req, res) => {

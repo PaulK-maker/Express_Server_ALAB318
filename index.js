@@ -1,7 +1,7 @@
 const express = require("express");
 
 const path = require("path");
-// const router = express.Router();
+
 
 
 const logger = require("./middleware/logger");
@@ -32,8 +32,11 @@ app.use((req, res, next) => {
     next();
 })  
 
+app.get("/", (req,res)=>{
+    res.send('events api')
+} )
 //404 error
-app.use((req, res) => {
+app.use((req, res, next) => {
     res.status(404).json({ error: "Resource Not Found" });
 });
 
