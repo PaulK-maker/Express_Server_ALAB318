@@ -1,0 +1,11 @@
+<h1>Welcome to Event Planner!</h1>
+<p>Manage your events and RSVP with ease.</p>
+
+<ul>
+  <% events.forEach(event => { %>
+    <li>
+      <a href="/events/<%= event.id %>"><%= event.name %></a> - 
+      <%= event.date %>, <%= event.time %>
+    </li>
+  <% }) %>
+</ul>

@@ -1,0 +1,19 @@
+<%- include("../layouts/main", { title }) %>
+<h2><%= event.name %></h2>
+<p><strong>Date:</strong> <%= event.date %></p>
+<p><strong>Time:</strong> <%= event.time %></p>
+<p><strong>Location:</strong> <%= event.location %></p>
+<p><strong>Description:</strong> <%= event.description %></p>
+
+<h3>Attendees:</h3>
+<ul>
+  <% event.attendees.forEach(attendee => { %>
+    <li><%= attendee %></li>
+  <% }) %>
+</ul>
+
+<h3>RSVP</h3>
+<form action="/rsvp" method="POST">
+  <input type="text" name="name" placeholder="Your Name" required />
+  <button type="submit">RSVP</button>
+</form>

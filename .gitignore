@@ -1,0 +1,22 @@
+# Logs
+logs/
+*.log
+
+# IDE/Editor settings
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.bak
+
+# Debugging files
+coverage/
