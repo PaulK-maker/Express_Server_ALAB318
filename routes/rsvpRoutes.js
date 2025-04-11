@@ -85,6 +85,35 @@ router.post("/", (req, res) => {
 // GET /rsvp - List all RSVPs
 router.get("/", (req, res) => {
   res.render("pages/rsvpList", { title: "RSVP List", rsvps });
+
+});
+
+// DELETE /rsvp/:id - Delete an RSVP
+router.delete("/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = rsvps.findIndex((rsvp) => rsvp.id === id);
+
+  if (index === -1) {
+    return res.status(404).json({ error: "RSVP not found" });
+  }
+
+  rsvps.splice(index, 1); // Remove the RSVP from the array
+  res.status(200).json({ message: "RSVP deleted successfully" }); // Respond with success
+});
+
+// PATCH /rsvp/:id - Update an RSVP
+router.patch("/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const rsvp = rsvps.find((rsvp) => rsvp.id === id);
+
+  if (!rsvp) {
+    return res.status(404).json({ error: "RSVP not found" });
+  }
+
+  // Update the RSVP properties based on the request body
+  Object.assign(rsvp, req.body);
+
+  res.status(200).json({ message: "RSVP updated successfully", rsvp }); // Respond with success
 });
 
 module.exports = router;

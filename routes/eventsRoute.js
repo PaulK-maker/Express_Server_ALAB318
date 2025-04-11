@@ -16,8 +16,11 @@ router.param("id", (req, res, next, id) => {
 });
 
 // GET /events - List all events
-router.get("/", (req, res) => {
+ router.get("/", (req, res) => {
   res.json(events); // Respond with the list of events
+ });
+router.get("/", (req, res) => {
+  res.render("pages/eventList", { title: "Events List", events });
 });
 
 // GET /events/:id - Retrieve details of a single event
@@ -33,6 +36,26 @@ router.get("/:id", (req, res) => {
   }
 
    res.render("pages/eventDetails", { title: event.name, event });
+});
+
+// PATCH /events/:id - Update details of a single event
+router.patch("/:id", (req, res) => {
+  if (!req.event) {
+      return res.status(404).render("pages/error", {
+          title: "Error",
+          message: "Event not found!"
+      });
+  }
+
+  // Update the event properties
+  req.event.name = req.body.name;
+  req.event.date = req.body.date;
+  req.event.time = req.body.time;
+  req.event.location = req.body.location;
+  req.event.description = req.body.description;
+
+  // After updating, redirect to the event details page
+  res.redirect(`/events/${req.params.id}`);
 });
 
 module.exports = router;

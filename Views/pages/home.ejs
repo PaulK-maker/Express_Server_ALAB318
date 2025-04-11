@@ -1,6 +1,6 @@
 <h1>Welcome to Event Planner!</h1>
 <p>Manage your events and RSVP with ease.</p>
-
+<!-- 
 <ul>
   <% events.forEach(event => { %>
     <li>
@@ -8,4 +8,60 @@
       <%= event.date %>, <%= event.time %>
     </li>
   <% }) %>
-</ul>
+</ul> -->
+
+
+<h1>Welcome to Events API</h1>
+<p>Explore our events and RSVP!</p>
+
+<h2>Update RSVP</h2>
+<form id="updateRsvpForm">
+  <input type="hidden" id="rsvpId" value="1">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" value="John Doe"><br><br>
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" value="john@example.com"><br><br>
+  <button type="submit">Update RSVP</button>
+</form>
+
+<h2>Delete RSVP</h2>
+<form id="deleteRsvpForm">
+  <input type="hidden" id="deleteRsvpId" value="1">
+  <button type="submit">Delete RSVP</button>
+</form>
+
+<script>
+  document.getElementById('updateRsvpForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const rsvpId = document.getElementById('rsvpId').value;
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+
+    fetch(`/rsvp/${rsvpId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name: name, email: email })
+    })
+    .then(response => response.json())
+    .then(data => {
+      alert(data.message);
+    })
+    .catch(error => console.error('Error:', error));
+  });
+
+  document.getElementById('deleteRsvpForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const rsvpId = document.getElementById('deleteRsvpId').value;
+
+    fetch(`/rsvp/${rsvpId}`, {
+      method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+      alert(data.message);
+    })
+    .catch(error => console.error('Error:', error));
+  });
+</script>

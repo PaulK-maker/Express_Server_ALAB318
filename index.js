@@ -9,6 +9,7 @@ const errorHandler = require("./middleware/errorHandler");
 const eventsRoute = require("./routes/eventsRoute");
 const rsvpRoute = require("./routes/rsvpRoutes");
 const engine = require("ejs-locals");
+const methodOverride = require('method-override');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(logger);
 
+app.use(methodOverride('_method')); 
 
 // Serve static files from public directory
 app.use(express.static("public"));
@@ -31,7 +33,7 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 // app.set("views", path.join(__dirname, "views"));
 
-app.set("views", "./views"); 
+app.set("Views", "./Views"); 
 
 // Routes setup
 app.use("/events", eventsRoute);
