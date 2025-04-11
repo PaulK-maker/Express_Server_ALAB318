@@ -1,0 +1,7 @@
+
+<h1><%= title %></h1>
+<ul>
+  <% rsvps.forEach(rsvp => { %>
+    <li><a href="/rsvp/<%= rsvp.id %>"><%= rsvp.name %></a></li>
+  <% }); %>
+</ul>

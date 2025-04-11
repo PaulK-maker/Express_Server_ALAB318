@@ -4,10 +4,15 @@ const events = [
     name: "Team Meeting",
     date: "2025-04-15",
     time: "10:00 AM",
-    location: "Conference Room A",
+    location: "123 Willowbrook Lane, Everwood, Valtoria 98765, - Conference Room A",
     description: "Monthly team meeting to discuss project updates.",
     ownerId: 1, // User ID of the event creator
-    attendees: ["John Doe", "Jane Smith"],
+    attendees: [ "John Doe",
+      "Jane Smith",
+      "Alice Johnson",
+      "Bob Brown",
+      "Charlie White",
+      "Diana Black"],
   },
 
 
@@ -16,10 +21,13 @@ const events = [
     name: "Birthday Party",
     date: "2025-04-20",
     time: "6:00 PM",
-    location: "John's House",
+    location: "123 Willowbrook Lane, Everwood, Valtoria 98765, - John's House",
     description: "Celebrating John's birthday!",
     ownerId: 1, // User ID of the event creator
-    attendees: ["Alice", "Bob"], //RSVPs
+    attendees: ["John Doe",
+  "Jane Smith",
+  "Alice",
+  "Bob"], //RSVPs
   },
 ];
 
