@@ -1,3 +1,4 @@
+//Events object Array
 const events = [
   {
     id: 1,
