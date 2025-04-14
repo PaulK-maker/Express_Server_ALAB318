@@ -18,9 +18,9 @@
   <button type="submit">RSVP</button>
 </form> -->
 
-<h1><%= title %></h1>
+<h1><%= title %></h1> 
 
-<h2><%= event.name %></h2>
+<h2><%= event.eventName %></h2>
 <p><strong>Date:</strong> <%= event.date %></p>
 <p><strong>Time:</strong> <%= event.time %></p>
 <p><strong>Location:</strong> <%= event.location %></p>
@@ -33,15 +33,15 @@
   <% }) %>
 </ul>
 
-<h3>RSVP</h3>
+<h3>RSVP Reservation</h3>
 <form action="/rsvp" method="POST">
   <input type="text" name="name" placeholder="Your Name" required />
   <button type="submit">RSVP</button>
 </form>
 
-<h3>Update Event</h3>
+<h3>Update Your Event</h3>
 <form action="/events/<%= event.id %>?_method=PATCH" method="POST">
-    <label for="name">Name:</label><br>
+    <label for="name">Name of the Event:</label><br>
     <input type="text" id="name" name="name" value="<%= event.name %>"><br><br>
 
     <label for="date">Date:</label><br>

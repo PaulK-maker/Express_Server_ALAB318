@@ -1,7 +1,7 @@
 const events = [
   {
     id: 1,
-    name: "Team Meeting",
+    eventName: "Team Meeting",
     date: "2025-04-15",
     time: "10:00 AM",
     location: "123 Willowbrook Lane, Everwood, Valtoria 98765, - Conference Room A",
@@ -18,7 +18,7 @@ const events = [
 
   {
     id: 2,
-    name: "Birthday Party",
+    eventName: "Birthday Party",
     date: "2025-04-20",
     time: "6:00 PM",
     location: "123 Willowbrook Lane, Everwood, Valtoria 98765, - John's House",

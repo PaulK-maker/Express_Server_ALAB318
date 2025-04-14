@@ -1,6 +1,6 @@
 const express = require("express");
 
-// const path = require("path");
+ const path = require("path");
 
 
 
@@ -27,11 +27,11 @@ app.use(methodOverride('_method'));
 app.use(express.static("public"));
 
 // Serve static files from public directory
-// app.use(express.static(path.join(__dirname, "public")));
+ app.use(express.static(path.join(__dirname, "public")));
 
 // Set EJS as the template engine
 app.set("view engine", "ejs");
-// app.set("views", path.join(__dirname, "views"));
+ app.set("views", path.join(__dirname, "views"));
 
 app.set("Views", "./Views"); 
 

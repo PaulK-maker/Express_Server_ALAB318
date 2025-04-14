@@ -1,5 +1,5 @@
-<h1>Welcome to Event Planner!</h1>
-<p>Manage your events and RSVP with ease.</p>
+<!-- <h1>Welcome to Event Planner!</h1>
+<p>Manage your events and RSVP with ease.</p> -->
 <!-- 
 <ul>
   <% events.forEach(event => { %>
@@ -12,44 +12,60 @@
 
 
 <h1>Welcome to Events API</h1>
-<p>Explore our events and RSVP!</p>
+<p>Explore our events and RSVP!</p> 
 
+
+<!-- Section for updating RSVP -->
 <h2>Update RSVP</h2>
 <form id="updateRsvpForm">
+   <!-- Hidden input to store the RSVP ID -->
   <input type="hidden" id="rsvpId" value="1">
+   <!-- Input field for the user's name -->
   <label for="name">Name:</label>
   <input type="text" id="name" name="name" value="John Doe"><br><br>
+  
+  <!-- Input field for the user's email -->
   <label for="email">Email:</label>
   <input type="email" id="email" name="email" value="john@example.com"><br><br>
+  
+    <!-- Submit button to trigger the RSVP update -->
   <button type="submit">Update RSVP</button>
 </form>
 
+<!-- Section for deleting RSVP -->
 <h2>Delete RSVP</h2>
 <form id="deleteRsvpForm">
   <input type="hidden" id="deleteRsvpId" value="1">
+
+    <!-- Submit button to trigger the RSVP deletion -->
   <button type="submit">Delete RSVP</button>
 </form>
 
 <script>
+   // Add an event listener to handle the submission of the "Update RSVP" form
   document.getElementById('updateRsvpForm').addEventListener('submit', function(event) {
     event.preventDefault();
+    // Retrieve values from the form inputs
     const rsvpId = document.getElementById('rsvpId').value;
+
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
 
+ // Send a PATCH request to update the RSVP on the server
     fetch(`/rsvp/${rsvpId}`, {
-      method: 'PATCH',
+      method: 'PATCH',   // HTTP method indicating a partial update
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json' // Specify that we're sending JSON data
       },
-      body: JSON.stringify({ name: name, email: email })
+      body: JSON.stringify({ name: name, email: email }) // Convert data to JSON format
     })
-    .then(response => response.json())
+    })
+    .then(response => response.json())  // Parse the JSON response from the server
     .then(data => {
-      alert(data.message);
+      alert(data.message);  // Display a message from the server
     })
     .catch(error => console.error('Error:', error));
-  });
+  
 
   document.getElementById('deleteRsvpForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -60,8 +76,8 @@
     })
     .then(response => response.json())
     .then(data => {
-      alert(data.message);
+      alert(data.message); // Display a message from the server
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => console.error('Error:', error)); 
   });
 </script>
